@@ -25,7 +25,9 @@ SECRET_KEY = 'django-insecure-cifhar70#v&i#d6#lmxw+x&bp-u*@434)xpfqi1&hao%zljvk-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"]
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
 
 
 # Application definition
@@ -135,3 +137,6 @@ REST_FRAMEWORK = {
     )
 }
 
+import os
+if os.environ.get("RENDER"):
+    DEBUG = False
