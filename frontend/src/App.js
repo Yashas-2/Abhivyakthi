@@ -118,7 +118,7 @@ function App() {
             <div className="cultural-element cultural" style={{ top: '15%', left: '25%' }}>🌟</div>
             <div className="cultural-element performance" style={{ top: '60%', left: '90%' }}>🎤</div>
             <div className="cultural-element focus" style={{ top: '85%', left: '50%' }}></div>
-            <div className="cultural-element heritage" style={{ top: '30%', left: '40%' }}></div>
+
           </div>
           <CoordinatorsSection />
         </section>
@@ -135,7 +135,7 @@ function App() {
             <div className="cultural-element cultural" style={{ top: '15%', left: '25%' }}>🌟</div>
             <div className="cultural-element performance" style={{ top: '60%', left: '90%' }}>🎤</div>
             <div className="cultural-element focus" style={{ top: '85%', left: '50%' }}></div>
-            <div className="cultural-element heritage" style={{ top: '30%', left: '40%' }}>🕉️</div>
+
           </div>
           <WingsSection />
         </section>
@@ -152,7 +152,7 @@ function App() {
             <div className="cultural-element cultural" style={{ top: '15%', left: '25%' }}>🌟</div>
             <div className="cultural-element performance" style={{ top: '60%', left: '90%' }}>🎤</div>
             <div className="cultural-element focus" style={{ top: '85%', left: '50%' }}></div>
-            <div className="cultural-element heritage" style={{ top: '30%', left: '40%' }}>🕉️</div>
+
           </div>
           <EventsGallery />
         </section>
@@ -169,7 +169,7 @@ function App() {
             <div className="cultural-element cultural" style={{ top: '15%', left: '25%' }}>🌟</div>
             <div className="cultural-element performance" style={{ top: '60%', left: '90%' }}>🎤</div>
             <div className="cultural-element focus" style={{ top: '85%', left: '50%' }}></div>
-            <div className="cultural-element heritage" style={{ top: '30%', left: '40%' }}>🕉️</div>
+
           </div>
           <AchievementsSection />
         </section>
@@ -186,7 +186,7 @@ function App() {
             <div className="cultural-element cultural" style={{ top: '15%', left: '25%' }}>🌟</div>
             <div className="cultural-element performance" style={{ top: '60%', left: '90%' }}>🎤</div>
             <div className="cultural-element focus" style={{ top: '85%', left: '50%' }}></div>
-            <div className="cultural-element heritage" style={{ top: '30%', left: '40%' }}>🕉️</div>
+
           </div>
           <ContactSection />
         </section>
