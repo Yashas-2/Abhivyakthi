@@ -2300,36 +2300,30 @@ p {
 }
 
 .coordinator-card {
+  background: linear-gradient(145deg, #2c2c2c, #1a1a1a);
+  border: 1px solid var(--primary-maroon);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 250px;
+  color: var(--text-light);
   scroll-snap-align: start;
-  flex: 0 0 87.5%;
+  flex: 0 0 auto;
   max-width: 350px;
   margin: 0 0.5rem;
 }
 
-.coordinator-card {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid rgba(212, 175, 55, 0.3);
-  border-radius: 12px;
-  padding: 1.8rem;
-  text-align: center;
-  transition: all 0.3s ease;
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  min-height: 300px;
-  position: relative;
-  backdrop-filter: none;
-  color: #333;
-}
-
-.coordinator-card::before {
-  display: none;
-}
-
 .coordinator-card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+  border-color: var(--secondary-gold);
 }
 
 .coordinator-photo {
@@ -2468,12 +2462,13 @@ p {
 }
 
 /* Re-enable manual horizontal scrolling */
-/* Desktop: Grid layout */
+/* Coordinators Grid - Desktop: Grid layout */
 .coordinators-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
   gap: 1.5rem;
   padding: 1rem 0;
+  justify-items: center;
 }
 
 /* Mobile: Horizontal swipe carousel */
@@ -2481,7 +2476,7 @@ p {
   .coordinators-grid {
     display: flex;
     overflow-x: auto;
-    gap: 0.5rem;
+    gap: 1rem;
     padding: 1rem 0;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
@@ -2499,8 +2494,8 @@ p {
   
   .coordinator-card {
     scroll-snap-align: center;
-    flex: 0 0 87.5%;
-    max-width: none;
+    flex: 0 0 auto;
+    max-width: 300px;
     margin: 0 0.5rem;
   }
 }

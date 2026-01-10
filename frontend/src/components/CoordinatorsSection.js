@@ -9,16 +9,17 @@ const CoordinatorsSection = () => {
 
 
   useEffect(() => {
-    // Fetch members data
+    // Set loading to false immediately to show hardcoded coordinators
+    setLoading(false);
+    
+    // Fetch members data in background
     API.get("/members/")
       .then(res => {
         setMembers(res.data);
-        setLoading(false);
       })
       .catch(err => {
         console.error("Error fetching members:", err);
-        // In case of error, we'll continue with empty data
-        setLoading(false);
+        // In case of error, keep empty API members
       });
   }, []);
 
@@ -108,23 +109,23 @@ const CoordinatorsSection = () => {
           
           
           {/* All members from API */}
-          {members.filter(member => member.member.name !== 'Yashas H K').map((member, index) => (
-            <div key={index} className="coordinator-card card fade-in">
+          {members.filter(member => member?.member?.name && member.member.name !== 'Yashas H K').map((member, index) => (
+            <div key={`api-${index}`} className="coordinator-card card fade-in">
               <div className="coordinator-photo">
                 {member.photo ? (
-                  <img src={member.photo} alt={member.member.name} />
+                  <img src={member.photo} alt={member.member?.name || 'Member'} />
                 ) : (
                   <div className="placeholder-avatar">👤</div>
                 )}
               </div>
               <div className="coordinator-info">
-                <h3 className="coordinator-name">{member.member.name}</h3>
-                <p className="coordinator-role">{member.member.role.title}</p>
+                <h3 className="coordinator-name">{member.member?.name || 'Name Not Available'}</h3>
+                <p className="coordinator-role">{member.member?.role?.title || 'Role Not Available'}</p>
                 
                 <div className="coordinator-details">
-                  <p className="coordinator-wing">Wing: {member.wing.name}</p>
-                  <p className="coordinator-year">Year: {member.year}</p>
-                  <p className="coordinator-contact">Contact: {member.contact}</p>
+                  <p className="coordinator-wing">Wing: {member.wing?.name || 'Wing Not Specified'}</p>
+                  <p className="coordinator-year">Year: {member.year || 'Year Not Specified'}</p>
+                  <p className="coordinator-contact">Contact: {member.contact || 'Contact Not Available'}</p>
                 </div>
                 
 
