@@ -15,25 +15,27 @@ const HeroSection = () => {
   return (
     <section className="hero-section">
       <div className="hero-background">
-        <img 
-
-        />
         <div className="hero-overlay"></div>
       </div>
       
       <div className="hero-content fade-in">
-        <div className="hero-logo">
-          <img 
-            src="/abhivyakti-logo.jpg" 
-            alt="Abhivyakthi Logo" 
-            className="hero-logo-img"
-          />
+        {/* Decorative gold ornament */}
+        <div className="hero-ornament">
+          <span className="ornament-line"></span>
+          <span className="ornament-icon">✦</span>
+          <span className="ornament-line"></span>
         </div>
+
         <h1 className="hero-title">ABHIVYAKTHI</h1>
         <p className="hero-subtitle">Cultural Association of Malnad College of Engineering</p>
         <p className="hero-description">
           Where talent finds a stage and culture finds heart.
         </p>
+
+        <div className="hero-ornament hero-ornament--bottom">
+          <span className="ornament-line"></span>
+        </div>
+
         <button 
           className="hero-cta-btn btn"
           onClick={() => {
@@ -57,10 +59,10 @@ const HeroSection = () => {
           }
         }}
       >
-        <span>↓</span>
+        <span className="scroll-chevron"></span>
       </div>
     </section>
   );
 };
 
-export default HeroSection;
+export default HeroSection;
