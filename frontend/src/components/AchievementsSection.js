@@ -23,7 +23,20 @@ const AchievementsSection = () => {
       description: "Our team participated and won 2nd place in Battle of Bands in 2023",
       type: "Achievement"
     },
-  
+    {
+      id: 4,
+      title: "Yukti 2k26",
+      event: "Cultural Fest at Acharya Institute of Technology",
+      description: "Secured 1st Place in Rangoli, Solo Singing, and Mad ADS. Runner-Ups: Secured 2nd Place in Group Singing.",
+      type: "Achievement"
+    },
+    {
+      id: 5,
+      title: "Explorica",
+      event: "Cultural Fest at St. Joseph's College",
+      description: "Secured 1st Place in Group Singing. Secured 3rd Place in Solo Singing.",
+      type: "Achievement"
+    }
   ];
 
   return (

@@ -30,6 +30,64 @@ const CoordinatorsSection = () => {
   return (
     <section className="coordinators-section" id="coordinators">
       <div className="container">
+        <h2 className="section-title fade-in">Our Faculty Coordinators</h2>
+        
+        <div className="coordinators-grid" style={{ marginBottom: '5rem', maxWidth: '800px', margin: '0 auto 5rem auto' }}>
+          
+          <div className="coordinator-card card fade-in">
+            <div className="coordinator-photo" style={{ position: 'relative' }}>
+              <img 
+                src="/images/niharika.jpg" 
+                alt="Niharika Hegde M" 
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.style.display = 'none';
+                  if (e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+              <div className="placeholder-avatar" style={{ display: 'none' }}>
+                N
+              </div>
+            </div>
+            <div className="coordinator-info">
+              <h3 className="coordinator-name">Niharika Hegde M</h3>
+              <p className="coordinator-role">Faculty Coordinator</p>
+              
+              <div className="coordinator-details">
+                <p className="coordinator-wing">Department: To Be Updated</p>
+                <p className="coordinator-contact">Contact: pending</p>
+              </div>
+            </div>
+          </div>
+          
+          <div className="coordinator-card card fade-in">
+            <div className="coordinator-photo" style={{ position: 'relative' }}>
+              <img 
+                src="/images/aditya.jpg" 
+                alt="Dr. Adithya G N" 
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.style.display = 'none';
+                  if (e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+              <div className="placeholder-avatar" style={{ display: 'none' }}>
+                D
+              </div>
+            </div>
+            <div className="coordinator-info">
+              <h3 className="coordinator-name">Dr. Adithya G N</h3>
+              <p className="coordinator-role">Faculty Coordinator</p>
+              
+              <div className="coordinator-details">
+                <p className="coordinator-wing">Department: To Be Updated</p>
+                <p className="coordinator-contact">Contact: pending</p>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
         <h2 className="section-title fade-in">Our Co-ordinators</h2>
         
         <div className="coordinators-grid">

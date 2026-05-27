@@ -8,6 +8,7 @@ import WingsSection from './components/WingsSection';
 import CoordinatorsSection from './components/CoordinatorsSection';
 import EventsGallery from './components/EventsGallery';
 import AchievementsSection from './components/AchievementsSection';
+import GallerySection from './components/GallerySection';
 import ContactSection from './components/ContactSection';
 
 function App() {
@@ -76,7 +77,7 @@ function App() {
       </nav>
       
       <main>
-        <section id="home" className="section">
+        <section id="home" className="section" style={{ padding: 0, minHeight: 'auto' }}>
           <HeroSection />
         </section>
         
@@ -104,18 +105,26 @@ function App() {
         {/* Divider after Wings */}
         <div className="section-divider"></div>
         
+        {/* Temporarily hidden as requested
         <section id="events" className="section">
           <EventsGallery />
         </section>
         
-        {/* Divider after Events */}
         <div className="section-divider"></div>
+        */}
         
         <section id="achievements" className="section">
           <AchievementsSection />
         </section>
         
         {/* Divider after Achievements */}
+        <div className="section-divider"></div>
+
+        <section id="gallery" className="section">
+          <GallerySection />
+        </section>
+
+        {/* Divider after Gallery */}
         <div className="section-divider"></div>
         
         <section id="contact" className="section">

@@ -1,7 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const WingsSection = () => {
   const [activeModalWing, setActiveModalWing] = useState(null);
+
+  useEffect(() => {
+    if (activeModalWing) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [activeModalWing]);
 
   const wings = [
     {
@@ -147,6 +158,9 @@ const WingsSection = () => {
             onClick={(e) => e.stopPropagation()}
             style={{ '--wing-color': activeModalWing.color }}
           >
+            <div style={{ position: 'sticky', top: '0', display: 'flex', justifyContent: 'flex-end', zIndex: 3000, margin: '-1rem -1rem 0 0' }}>
+              <button className="wing-modal-close" onClick={closeWingModal}>✕</button>
+            </div>
 
             <div className="wing-modal-header">
               <span className="wing-modal-icon">{activeModalWing.icon}</span>
@@ -214,7 +228,6 @@ const WingsSection = () => {
               </div>
             </div>
           </div>
-          <button className="wing-modal-close" onClick={closeWingModal}>✕</button>
         </div>
       )}
     </section>
