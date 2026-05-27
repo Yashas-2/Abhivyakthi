@@ -64,7 +64,7 @@ const ContactSection = () => {
                 <a href="https://www.instagram.com/mce_abhivyakthi" target="_blank" rel="noopener noreferrer" className="social-btn instagram">
                   <span className="btn-icon">📸</span> Instagram
                 </a>
-                <a href="https://www.youtube.com/@malnadculturalteam4265" target="_blank" rel="noopener noreferrer" className="social-btn youtube">
+                <a href="https://youtube.com/@mce_abhivyakthi?si=DokANwZZ2DVqoX3i" target="_blank" rel="noopener noreferrer" className="social-btn youtube">
                   <span className="btn-icon">🎥</span> YouTube
                 </a>
               </div>

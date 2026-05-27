@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
 const HeroSection = () => {
-  const [isScrolled, setIsScrolled] = useState(false);
-
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+      // Scroll handler for potential future use
     };
 
     window.addEventListener('scroll', handleScroll);
@@ -65,4 +63,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default HeroSection;

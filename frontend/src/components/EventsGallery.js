@@ -3,8 +3,6 @@ import React, { useState, useEffect } from 'react';
 const EventsGallery = () => {
   const [events, setEvents] = useState([]);
   const [loading, setLoading] = useState(true);
-  const [eventIndex, setEventIndex] = useState(0);
-  const [slideDirection, setSlideDirection] = useState('');
 
   useEffect(() => {
     // In a real implementation, we would fetch from the backend
@@ -13,30 +11,6 @@ const EventsGallery = () => {
       setEvents(detailedEvents);
       setLoading(false);
     }, 500);
-
-    // Uncomment when backend API is available
-    /*
-    API.get("/events/")
-      .then(res => {
-        // For now, we'll add mock images to the events data
-        const eventsWithImages = res.data.map(event => ({
-          ...event,
-          images: [
-            "https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-            "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80",
-            "https://images.unsplash.com/photo-1514329926531-7f7aea9b4d02?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
-          ]
-        }));
-        setEvents(eventsWithImages);
-        setLoading(false);
-      })
-      .catch(err => {
-        console.error("Error fetching events:", err);
-        // Fallback to mock data if API fails
-        setEvents(detailedEvents);
-        setLoading(false);
-      });
-    */
   }, []);
 
   // Detailed events data with provided information
@@ -128,31 +102,6 @@ const EventsGallery = () => {
 
     }
   ];
-
-
-
-  const handleEventNav = (direction) => {
-    const numEvents = events.length;
-    
-    // Set slide direction for animation
-    setSlideDirection(direction === -1 ? 'right' : 'left');
-    
-    setEventIndex(prevIndex => {
-      const nextIndex = prevIndex + direction;
-      if (nextIndex < 0) {
-        return numEvents - 1; // Loop to last
-      }
-      if (nextIndex >= numEvents) {
-        return 0; // Loop to first
-      }
-      return nextIndex;
-    });
-    
-    // Reset slide direction after animation
-    setTimeout(() => {
-      setSlideDirection('');
-    }, 300);
-  };
 
   if (loading) {
     return <div className="loading">Loading events gallery...</div>;
