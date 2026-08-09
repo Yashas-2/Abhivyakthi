@@ -4450,12 +4450,20 @@ footer::before {
     flex-direction: column;
     text-align: center;
     align-items: center;
-    padding: 2.2rem 1.5rem;
+    padding: 2rem 1.2rem;
   }
 
   .card-right-content {
     align-items: center;
     text-align: center;
+    width: 100%;
+  }
+
+  .card-title-serif {
+    font-size: clamp(1.4rem, 6vw, 2rem) !important;
+    white-space: normal !important;
+    word-break: break-word !important;
+    overflow-wrap: break-word !important;
   }
 
   .card-cta-button {
@@ -4463,7 +4471,7 @@ footer::before {
   }
 
   .awwwards-title {
-    font-size: 2.3rem;
+    font-size: 2.1rem;
   }
 }
 
