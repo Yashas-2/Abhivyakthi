@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import API from '../services/api';
+import Icon from './Icons';
 
 // Removed filters and Faculty Coordinator placeholder as per requirements
 
@@ -88,84 +89,80 @@ const CoordinatorsSection = () => {
 
         </div>
 
-        <h2 className="section-title fade-in">Our Co-ordinators</h2>
+        <h2 className="section-title fade-in">Our Team Coordinators</h2>
         
         <div className="coordinators-grid">
           
+          {/* Main Coordinator & Event Manager */}
           <div className="coordinator-card card fade-in">
             <div className="coordinator-photo">
-              <img src="/images/poorvi.jpg" alt="Poorvi Vasista" />
+              <img 
+                src="/images/varsha.jpg" 
+                alt="Varsha Shashikumar" 
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.style.display = 'none';
+                  if (e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+              <div className="placeholder-avatar" style={{ display: 'none' }}>V</div>
             </div>
             <div className="coordinator-info">
-              <h3 className="coordinator-name">Poorvi Vasista U N</h3>
-              <p className="coordinator-role">Main Co-ordinator</p>
-              
+              <h3 className="coordinator-name">Varsha Shashikumar</h3>
+              <p className="coordinator-role">Main Coordinator & Event Manager</p>
               <div className="coordinator-details">
-                <p className="coordinator-wing">Wing: Cultural</p>
-                <p className="coordinator-year">Department: CSE</p>
-                <p className="coordinator-contact">Contact: poorvi@example.com</p>
+                <p className="coordinator-wing">Role: Leadership & Management</p>
+                <p className="coordinator-contact">Contact: +91 84316 27346</p>
               </div>
-              
-
             </div>
           </div>
-          
+
+          {/* Co Coordinator */}
           <div className="coordinator-card card fade-in">
             <div className="coordinator-photo">
-              <img src="/images/bhuvan.jpg" alt="Bhuvan Sharma H V" />
+              <img 
+                src="/images/sunil.jpg" 
+                alt="Sunil K P" 
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.style.display = 'none';
+                  if (e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+              <div className="placeholder-avatar" style={{ display: 'none' }}>S</div>
             </div>
             <div className="coordinator-info">
-              <h3 className="coordinator-name">Bhuvan Sharma H V</h3>
-              <p className="coordinator-role">Co Co-ordinator</p>
-              
+              <h3 className="coordinator-name">Sunil K P</h3>
+              <p className="coordinator-role">Co Coordinator</p>
               <div className="coordinator-details">
-                <p className="coordinator-wing">Wing: Cultural</p>
-                <p className="coordinator-year">Department: ECE</p>
-                <p className="coordinator-contact">Contact: bhuvan@example.com</p>
+                <p className="coordinator-wing">Role: Cultural Coordination</p>
               </div>
-              
-
             </div>
           </div>
-          
-          <div className="coordinator-card card fade-in">
+
+          {/* Treasurer - Centered on bottom row with identical width as top 2 cards */}
+          <div className="coordinator-card card fade-in" style={{ gridColumn: '1 / -1', justifySelf: 'center' }}>
             <div className="coordinator-photo">           
-              <img src="/images/kishore.jpg" alt="Kishore Kumar N S" />                                                    
+              <img 
+                src="/images/giridhar.jpg" 
+                alt="Giridhar Gowda G A" 
+                onError={(e) => {
+                  e.target.onerror = null;
+                  e.target.style.display = 'none';
+                  if (e.target.nextSibling) e.target.nextSibling.style.display = 'flex';
+                }}
+              />
+              <div className="placeholder-avatar" style={{ display: 'none' }}>G</div>
             </div>
             <div className="coordinator-info">
-              <h3 className="coordinator-name">Kishore Kumar N S</h3>
+              <h3 className="coordinator-name">Giridhar Gowda G A</h3>
               <p className="coordinator-role">Treasurer</p>
-                        
               <div className="coordinator-details">
-                <p className="coordinator-wing">Wing: Cultural</p>
-                <p className="coordinator-year">Department: MECH</p>
-                <p className="coordinator-contact">Contact: kishore@example.com</p>
+                <p className="coordinator-wing">Role: Finance & Accounts</p>
               </div>
-                        
-
             </div>
           </div>
 
-                    <div className="coordinator-card card fade-in">
-            <div className="coordinator-photo">           
-              <img src="/images/khushi.jpg" alt="Khushi" />                                                    
-            </div>
-            <div className="coordinator-info">
-              <h3 className="coordinator-name">Khushi</h3>
-              <p className="coordinator-role">Event co-ordinator</p>
-                        
-              <div className="coordinator-details">
-                <p className="coordinator-wing">Wing: Cultural</p>
-                <p className="coordinator-year">Department: CSE</p>
-                <p className="coordinator-contact">Contact: khushi@example.com</p>
-              </div>
-                        
-
-            </div>
-          </div>
-
-          
-          
           {/* All members from API */}
           {members.filter(member => member?.member?.name && member.member.name !== 'Yashas H K').map((member, index) => (
             <div key={`api-${index}`} className="coordinator-card card fade-in">
@@ -173,20 +170,16 @@ const CoordinatorsSection = () => {
                 {member.photo ? (
                   <img src={member.photo} alt={member.member?.name || 'Member'} />
                 ) : (
-                  <div className="placeholder-avatar">👤</div>
+                  <div className="placeholder-avatar"><Icon name="user" size={36} color="#d4af37" /></div>
                 )}
               </div>
               <div className="coordinator-info">
                 <h3 className="coordinator-name">{member.member?.name || 'Name Not Available'}</h3>
                 <p className="coordinator-role">{member.member?.role?.title || 'Role Not Available'}</p>
-                
                 <div className="coordinator-details">
                   <p className="coordinator-wing">Wing: {member.wing?.name || 'Wing Not Specified'}</p>
-                  <p className="coordinator-year">Year: {member.year || 'Year Not Specified'}</p>
                   <p className="coordinator-contact">Contact: {member.contact || 'Contact Not Available'}</p>
                 </div>
-                
-
               </div>
             </div>
           ))}

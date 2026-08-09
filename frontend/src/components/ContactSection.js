@@ -1,4 +1,5 @@
 import React from 'react';
+import Icon from './Icons';
 
 const ContactSection = () => {
   return (
@@ -18,21 +19,21 @@ const ContactSection = () => {
               {/* Phone Card */}
               <div className="contact-info-card">
                 <div className="card-icon-box">
-                  <span className="info-icon">📞</span>
+                  <span className="info-icon"><Icon name="phone" size={22} color="#D4AF37" /></span>
                 </div>
                 <div className="card-content-box">
                   <h4 className="info-title">Phone Support</h4>
                   <p className="info-text">
-                    <a href="tel:+919632311957" className="highlight-link">Bhuvan Sharma : +91 96323 11957</a>
+                    <a href="tel:+918431627346" className="highlight-link">Varsha Shashikumar : +91 84316 27346</a>
                   </p>
-                  <p className="info-caption">Co Co-ordinator, Abhivyakthi</p>
+                  <p className="info-caption">Co-ordinator, Abhivyakthi</p>
                 </div>
               </div>
 
               {/* Email Card */}
               <div className="contact-info-card">
                 <div className="card-icon-box">
-                  <span className="info-icon">✉️</span>
+                  <span className="info-icon"><Icon name="email" size={22} color="#D4AF37" /></span>
                 </div>
                 <div className="card-content-box">
                   <h4 className="info-title">Official Email</h4>
@@ -46,7 +47,7 @@ const ContactSection = () => {
               {/* Location Card */}
               <div className="contact-info-card">
                 <div className="card-icon-box">
-                  <span className="info-icon">📍</span>
+                  <span className="info-icon"><Icon name="location" size={22} color="#D4AF37" /></span>
                 </div>
                 <div className="card-content-box">
                   <h4 className="info-title">Our Location</h4>
@@ -62,10 +63,10 @@ const ContactSection = () => {
               <h4 className="social-panel-title">Connect with our Community</h4>
               <div className="social-buttons-row">
                 <a href="https://www.instagram.com/mce_abhivyakthi" target="_blank" rel="noopener noreferrer" className="social-btn instagram">
-                  <span className="btn-icon">📸</span> Instagram
+                  <span className="btn-icon"><Icon name="instagram" size={20} /></span> Instagram
                 </a>
                 <a href="https://youtube.com/@mce_abhivyakthi?si=DokANwZZ2DVqoX3i" target="_blank" rel="noopener noreferrer" className="social-btn youtube">
-                  <span className="btn-icon">🎥</span> YouTube
+                  <span className="btn-icon"><Icon name="youtube" size={20} /></span> YouTube
                 </a>
               </div>
             </div>

@@ -1,0 +1,1509 @@
+/* ======================================================================
+   ABHIVYAKTHI — SITE-WIDE PREMIUM DESIGN LANGUAGE
+   Design Gold Standard: Wings Section
+   Applies Wings DNA to: Hero · About · Coordinators · Achievements
+                         Gallery · Contact · Footer
+   12 Principles: Depth · Lighting · Glass · Typography · Micro-Details
+                  Animation · Shadows · Transitions · Rhythm · Polish
+   ====================================================================== */
+
+/* ── 1. KEYFRAMES — Shared motion library ── */
+
+@keyframes ambientFloat {
+  0%, 100% { transform: translateY(0px) scale(1); opacity: 0.6; }
+  50%       { transform: translateY(-18px) scale(1.03); opacity: 0.9; }
+}
+
+@keyframes ambientPulse {
+  0%, 100% { opacity: 0.12; transform: scale(1); }
+  50%       { opacity: 0.22; transform: scale(1.08); }
+}
+
+@keyframes particleDrift {
+  0%   { transform: translateY(0px)   translateX(0px)  rotate(0deg);  opacity: 0; }
+  10%  { opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translateY(-80px) translateX(30px) rotate(180deg); opacity: 0; }
+}
+
+@keyframes scanlineMove {
+  0%   { transform: translateY(-100%); }
+  100% { transform: translateY(100vh); }
+}
+
+@keyframes rimPulse {
+  0%, 100% { box-shadow: 0 0 0px transparent; }
+  50%       { box-shadow: 0 0 25px rgba(246, 196, 83, 0.25); }
+}
+
+@keyframes orbitRotateCW  { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+@keyframes orbitRotateCCW { from { transform: rotate(0deg); } to { transform: rotate(-360deg); } }
+
+@keyframes sectionEntrance {
+  from { opacity: 0; transform: translateY(32px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowBreathe {
+  0%, 100% { filter: blur(130px); opacity: 0.14; }
+  50%       { filter: blur(110px); opacity: 0.22; }
+}
+
+@keyframes borderGlimmer {
+  0%, 100% { border-color: rgba(246, 196, 83, 0.22); }
+  50%       { border-color: rgba(246, 196, 83, 0.48); }
+}
+
+
+/* ======================================================================
+   2. GLOBAL CANVAS — Deep dark consistent with Wings section
+   ====================================================================== */
+
+html, body { background: #07070a !important; }
+
+.App {
+  background: #07070a !important;
+  /* Subtle premium page-level noise texture */
+  background-image:
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.022'/%3E%3C/svg%3E") !important;
+}
+
+main { background: #07070a !important; }
+
+/* Every section has a transparent background to expose the global background canvas */
+.hero,
+.hero-section,
+.section,
+.about-section,
+.coordinators-section,
+.achievements-section,
+.events-gallery,
+.gallery-section,
+.contact-section,
+.wings-section-awwwards,
+footer {
+  background: transparent !important;
+  background-color: transparent !important;
+  background-image: none !important;
+  position: relative !important;
+}
+
+
+
+/* ======================================================================
+   3. PREMIUM SECTION BACKGROUNDS — Each section has its own identity
+   ====================================================================== */
+
+/* ── ABOUT: Warm amber-gold atmosphere ── */
+.about-section {
+  padding: 7rem 2rem !important;
+}
+
+.about-section .section-bg-glow-a,
+.about-section .section-bg-glow-b,
+.coordinators-section .section-bg-glow-a,
+.achievements-section .section-bg-glow-a,
+.contact-section .section-bg-glow-a {
+  display: none !important;
+}
+
+
+/* ======================================================================
+   4. FLOATING AMBIENT PARTICLES — same feel as wing card orbit dots
+   ====================================================================== */
+
+/* Shared particle system — each section gets CSS-only floating dots */
+.about-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(246, 196, 83, 0.55) 1px, transparent 1px),
+    radial-gradient(circle, rgba(246, 196, 83, 0.30) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.20) 1px, transparent 1px);
+  background-size: 180px 180px, 120px 120px, 80px 80px;
+  background-position: 20px 30px, 60px 90px, 10px 50px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.5;
+  animation: ambientFloat 20s ease-in-out infinite;
+}
+
+.coordinators-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(246, 196, 83, 0.45) 1px, transparent 1px),
+    radial-gradient(circle, rgba(212, 175, 55, 0.25) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 200px 200px, 130px 130px, 90px 90px;
+  background-position: 40px 60px, 80px 20px, 150px 100px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+  animation: ambientFloat 24s ease-in-out infinite reverse;
+}
+
+.achievements-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(246, 196, 83, 0.60) 1.5px, transparent 1.5px),
+    radial-gradient(circle, rgba(212, 175, 55, 0.30) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.20) 1px, transparent 1px);
+  background-size: 160px 160px, 110px 110px, 75px 75px;
+  background-position: 30px 50px, 70px 30px, 120px 80px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.50;
+  animation: ambientFloat 18s ease-in-out infinite;
+}
+
+.contact-section::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle, rgba(246, 196, 83, 0.50) 1px, transparent 1px),
+    radial-gradient(circle, rgba(212, 175, 55, 0.30) 1px, transparent 1px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.18) 1px, transparent 1px);
+  background-size: 190px 190px, 125px 125px, 85px 85px;
+  background-position: 50px 40px, 90px 70px, 160px 110px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.45;
+  animation: ambientFloat 22s ease-in-out infinite reverse;
+}
+
+
+/* ======================================================================
+   5. SECTION CONTAINERS — z-index management for layered depth
+   ====================================================================== */
+
+.about-section .container,
+.coordinators-section .container,
+.achievements-section .container,
+.contact-section .container,
+.events-gallery .container {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+.coordinators-section,
+.coordinators-section .container,
+.coordinators-grid {
+  overflow: visible !important;
+  overflow-x: visible !important;
+}
+
+
+/* ======================================================================
+   6. SECTION HEADING SYSTEM — Wings awwwards-title equivalent
+   ====================================================================== */
+
+/* Premium badge pill above every section heading */
+.section-title {
+  font-family: 'Cinzel', 'Playfair Display', serif !important;
+  font-size: clamp(2rem, 4.5vw, 3.2rem) !important;
+  font-weight: 700 !important;
+  color: #FFFFFF !important;
+  letter-spacing: 2px !important;
+  text-shadow: 0 0 40px rgba(255, 255, 255, 0.15) !important;
+  text-transform: capitalize !important;
+  margin: 0 0 1rem 0 !important;
+  text-align: center !important;
+  line-height: 1.15 !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  background: none !important;
+}
+
+.section-subtitle {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  color: rgba(255, 255, 255, 0.62) !important;
+  font-size: 1.02rem !important;
+  text-align: center !important;
+  max-width: 620px !important;
+  margin: 0 auto 4rem auto !important;
+  line-height: 1.65 !important;
+  font-weight: 400 !important;
+  letter-spacing: 0.3px !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.62) !important;
+}
+
+/* Thin gold accent under section title (matches .card-accent-divider in Wings) */
+.section-title::after {
+  content: '' !important;
+  display: block !important;
+  width: 40px !important;
+  height: 2px !important;
+  background: #F6C453 !important;
+  border-radius: 2px !important;
+  margin: 0.8rem auto 0 auto !important;
+  box-shadow: 0 0 12px rgba(246, 196, 83, 0.7) !important;
+  opacity: 0.9 !important;
+}
+
+
+/* ======================================================================
+   7. THE GLASS CARD SYSTEM — Identical to Wings card depth
+   ====================================================================== */
+
+/* Every card inherits Wings card glass */
+.vision,
+.mission,
+.about-impact,
+.stat-item,
+.coordinator-card,
+.achievement-card,
+.event-card,
+.contact-details-panel,
+.contact-qr-panel,
+.contact-info-card,
+.gallery-item {
+  background: rgba(14, 16, 22, 0.94) !important;
+  backdrop-filter: blur(24px) !important;
+  -webkit-backdrop-filter: blur(24px) !important;
+  border: 1.5px solid rgba(246, 196, 83, 0.28) !important;
+  border-radius: 28px !important;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.75),
+    inset 0 1px 0 rgba(255, 255, 255, 0.10) !important;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  position: relative !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+/* Inner radial glow (= .card-radial-glow) baked into every card via ::before */
+.vision::before,
+.mission::before,
+.about-impact::before,
+.stat-item::before,
+.coordinator-card::before,
+.achievement-card::before,
+.event-card::before,
+.contact-details-panel::before,
+.contact-qr-panel::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -50% !important; left: -50% !important;
+  width: 200% !important; height: 200% !important;
+  background: radial-gradient(circle at 30% 50%,
+    rgba(246, 196, 83, 0.12) 0%, transparent 58%) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+  transition: opacity 0.45s ease !important;
+  opacity: 0.7 !important;
+  border-radius: 0 !important;
+  border: none !important;
+  height: 200% !important;
+}
+
+/* Top edge highlight (= inset 0 1px 0 in wings box-shadow) */
+.vision::after,
+.mission::after,
+.coordinator-card::after,
+.achievement-card::after,
+.contact-details-panel::after,
+.contact-qr-panel::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0 !important; left: 0 !important;
+  width: 100% !important; height: 2px !important;
+  background: linear-gradient(90deg,
+    transparent, rgba(246, 196, 83, 0.55), transparent) !important;
+  pointer-events: none !important;
+  z-index: 1 !important;
+  border-radius: 28px 28px 0 0 !important;
+  border: none !important;
+  bottom: auto !important;
+  animation: borderGlimmer 4s ease-in-out infinite !important;
+}
+
+/* All card content above pseudo layers */
+.vision > *,
+.mission > *,
+.about-impact > *,
+.stat-item > *,
+.coordinator-card > *,
+.achievement-card > *,
+.event-card > *,
+.contact-details-panel > *,
+.contact-qr-panel > * {
+  position: relative !important;
+  z-index: 2 !important;
+}
+
+/* Wings-identical hover elevation */
+.vision:hover,
+.mission:hover,
+.stat-item:hover,
+.coordinator-card:hover,
+.achievement-card:hover,
+.event-card:hover,
+.contact-info-card:hover {
+  transform: translateY(-8px) scale(1.012) !important;
+  border-color: rgba(246, 196, 83, 0.55) !important;
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.85),
+    0 0 40px rgba(246, 196, 83, 0.30),
+    inset 0 1px 0 rgba(255, 255, 255, 0.20) !important;
+}
+
+/* Amplify inner radial glow on hover */
+.vision:hover::before,
+.mission:hover::before,
+.stat-item:hover::before,
+.coordinator-card:hover::before,
+.achievement-card:hover::before,
+.event-card:hover::before {
+  opacity: 1 !important;
+}
+
+
+/* ======================================================================
+   8. ABOUT SECTION — Premium storytelling depth
+   ====================================================================== */
+
+.about-description {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: 1.22rem !important;
+  line-height: 1.95 !important;
+  color: rgba(255, 255, 255, 0.75) !important;
+  text-align: center !important;
+  letter-spacing: 0.4px !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.75) !important;
+}
+
+.vision,
+.mission {
+  padding: 2.2rem !important;
+  border-radius: 28px !important;
+}
+
+.vision h3,
+.mission h3 {
+  font-family: 'Cinzel', serif !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 4px !important;
+  font-weight: 800 !important;
+  color: #F6C453 !important;
+  -webkit-text-fill-color: #F6C453 !important;
+  background: none !important;
+  text-transform: uppercase !important;
+  margin-bottom: 1.2rem !important;
+}
+
+/* Fine accent divider under vision/mission heading (= .card-accent-divider) */
+.vision h3::after,
+.mission h3::after {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 2px;
+  background: #F6C453;
+  border-radius: 2px;
+  margin-top: 0.7rem;
+  box-shadow: 0 0 10px rgba(246, 196, 83, 0.7);
+  opacity: 0.85;
+}
+
+.vision p,
+.mission p,
+.mission-list li {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.96rem !important;
+  line-height: 1.85 !important;
+  color: rgba(255, 255, 255, 0.68) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.68) !important;
+}
+
+.mission-list li::before {
+  color: #F6C453 !important;
+}
+
+/* Stat items — Wings-card glass with orbital accent dot decoration */
+.stat-item {
+  padding: 2rem 1.8rem !important;
+  border-radius: 22px !important;
+  text-align: center !important;
+  animation: rimPulse 5s ease-in-out infinite !important;
+}
+
+.stat-item h3 {
+  font-family: 'Cinzel', serif !important;
+  font-weight: 900 !important;
+  font-size: 2.8rem !important;
+  color: #F6C453 !important;
+  -webkit-text-fill-color: #F6C453 !important;
+  background: none !important;
+  text-shadow: 0 0 20px rgba(246, 196, 83, 0.50) !important;
+  margin-bottom: 0.4rem !important;
+  letter-spacing: 2px !important;
+}
+
+.stat-item p {
+  font-size: 0.70rem !important;
+  letter-spacing: 3px !important;
+  text-transform: uppercase !important;
+  color: rgba(255, 255, 255, 0.42) !important;
+  font-weight: 700 !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.42) !important;
+  margin: 0 !important;
+}
+
+.about-impact {
+  padding: 2.5rem !important;
+  border-radius: 28px !important;
+}
+
+.about-impact h3 {
+  font-family: 'Cinzel', serif !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 4px !important;
+  font-weight: 800 !important;
+  color: #F6C453 !important;
+  -webkit-text-fill-color: #F6C453 !important;
+  background: none !important;
+  margin-bottom: 1rem !important;
+}
+
+.about-impact p {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  color: rgba(255, 255, 255, 0.68) !important;
+  line-height: 1.8 !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.68) !important;
+}
+
+
+/* ======================================================================
+   9. COORDINATORS SECTION — Premium profile panels
+   ====================================================================== */
+
+.coordinators-section .section-title { margin-bottom: 0.8rem !important; }
+
+.coordinator-card {
+  padding: 1.5rem 1.4rem !important;
+  border-radius: 24px !important;
+  text-align: center !important;
+  animation: borderGlimmer 6s ease-in-out infinite !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-height: 290px !important;
+  box-sizing: border-box !important;
+}
+
+/* Orbital ring accent around coordinator avatar (mirrors wing icon rings) */
+.coordinator-photo {
+  position: relative !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 130px !important;
+  height: 130px !important;
+  margin: 0 auto 1.4rem auto !important;
+  flex-shrink: 0 !important;
+}
+
+.coordinator-photo img {
+  width: 120px !important;
+  height: 120px !important;
+  object-fit: cover !important;
+  border-radius: 50% !important;
+}
+
+.coordinator-photo::before {
+  content: '';
+  position: absolute;
+  top: -8px; left: -8px;
+  width: calc(100% + 16px);
+  height: calc(100% + 16px);
+  border-radius: 50%;
+  border: 1px solid rgba(246, 196, 83, 0.25);
+  animation: orbitRotateCW 12s linear infinite;
+  pointer-events: none;
+}
+
+.coordinator-photo::after {
+  content: '';
+  position: absolute;
+  top: -4px; left: -4px;
+  width: calc(100% + 8px);
+  height: calc(100% + 8px);
+  border-radius: 50%;
+  border: 1.5px dashed rgba(246, 196, 83, 0.18);
+  animation: orbitRotateCCW 18s linear infinite;
+  pointer-events: none;
+}
+
+.coordinator-photo::before,
+.coordinator-photo::after {
+  display: none !important;
+}
+
+.coordinator-photo img {
+  border-radius: 50% !important;
+  border: 1.5px solid rgba(246, 196, 83, 0.4) !important;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6) !important;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  display: block !important;
+  position: relative !important;
+  z-index: 2 !important;
+  filter: none !important;
+  mix-blend-mode: normal !important;
+  opacity: 1 !important;
+}
+
+.coordinator-card:hover .coordinator-photo img {
+  border-color: #F6C453 !important;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.8) !important;
+  transform: scale(1.05) !important;
+}
+
+.placeholder-avatar {
+  background: rgba(14, 16, 22, 0.90) !important;
+  border: 2px solid rgba(246, 196, 83, 0.38) !important;
+  box-shadow: 0 0 20px rgba(246, 196, 83, 0.18) !important;
+  font-family: 'Cinzel', serif !important;
+  font-weight: 700 !important;
+  color: #F6C453 !important;
+}
+
+.coordinator-name {
+  font-family: 'Cinzel', serif !important;
+  font-size: 1rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  background: none !important;
+  margin-bottom: 0.3rem !important;
+}
+
+.coordinator-role {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.68rem !important;
+  font-weight: 700 !important;
+  letter-spacing: 2.5px !important;
+  text-transform: uppercase !important;
+  color: #F6C453 !important;
+  -webkit-text-fill-color: #F6C453 !important;
+}
+
+.coordinator-wing {
+  font-size: 0.82rem !important;
+  color: rgba(255, 255, 255, 0.48) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.48) !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+}
+
+/* Coordinator card accent divider (= .card-accent-divider from Wings) */
+.coordinator-name::after {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: #F6C453;
+  border-radius: 2px;
+  margin: 0.5rem auto;
+  box-shadow: 0 0 8px rgba(246, 196, 83, 0.65);
+  opacity: 0.8;
+}
+
+
+/* ======================================================================
+   10. ACHIEVEMENTS SECTION — Trophy luxury finish
+   ====================================================================== */
+
+.achievement-card {
+  padding: 2.2rem !important;
+  border-radius: 28px !important;
+}
+
+/* Accent bottom stripe (maroon→gold→maroon) like wings decorative element */
+.achievement-card .achievement-decorative-element {
+  position: absolute !important;
+  bottom: 0 !important; left: 0 !important;
+  width: 100% !important; height: 3px !important;
+  background: linear-gradient(90deg,
+    rgba(128, 0, 0, 0.5), rgba(246, 196, 83, 0.9), rgba(128, 0, 0, 0.5)) !important;
+  z-index: 3 !important;
+  border-radius: 0 0 28px 28px !important;
+  box-shadow: 0 0 16px rgba(246, 196, 83, 0.35) !important;
+}
+
+.achievement-badge {
+  background: rgba(8, 10, 15, 0.92) !important;
+  border: 1px solid rgba(246, 196, 83, 0.40) !important;
+  border-radius: 30px !important;
+  backdrop-filter: blur(14px) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.55),
+              0 0 14px rgba(246, 196, 83, 0.18) !important;
+  transition: all 0.35s ease !important;
+  padding: 0.38rem 0.9rem !important;
+}
+
+.achievement-card:hover .achievement-badge {
+  border-color: rgba(246, 196, 83, 0.70) !important;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.55),
+              0 0 24px rgba(246, 196, 83, 0.45) !important;
+}
+
+.achievement-type {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.70rem !important;
+  font-weight: 800 !important;
+  letter-spacing: 2px !important;
+  text-transform: uppercase !important;
+  color: #F6C453 !important;
+}
+
+.achievement-title {
+  font-family: 'Cinzel', serif !important;
+  font-weight: 800 !important;
+  font-size: 1.45rem !important;
+  letter-spacing: 1.5px !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  background: none !important;
+  margin: 1.4rem 0 0.5rem 0 !important;
+  line-height: 1.2 !important;
+}
+
+/* Thin gold divider under achievement title */
+.achievement-title::after {
+  content: '';
+  display: block;
+  width: 28px;
+  height: 2px;
+  background: #F6C453;
+  border-radius: 2px;
+  margin-top: 0.55rem;
+  box-shadow: 0 0 9px rgba(246, 196, 83, 0.65);
+  opacity: 0.85;
+}
+
+.achievement-event {
+  font-family: 'Cormorant Garamond', serif !important;
+  font-size: 1.05rem !important;
+  font-style: italic !important;
+  color: rgba(246, 196, 83, 0.82) !important;
+  -webkit-text-fill-color: rgba(246, 196, 83, 0.82) !important;
+  line-height: 1.55 !important;
+  margin-bottom: 0.6rem !important;
+}
+
+.achievement-description {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.91rem !important;
+  line-height: 1.75 !important;
+  color: rgba(255, 255, 255, 0.60) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.60) !important;
+}
+
+
+/* ======================================================================
+   11. EVENTS GALLERY — Premium image containers
+   ====================================================================== */
+
+.event-card {
+  border-radius: 24px !important;
+  padding: 1.6rem !important;
+}
+
+.event-name {
+  font-family: 'Cinzel', serif !important;
+  font-weight: 800 !important;
+  letter-spacing: 1.5px !important;
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  font-size: 1.2rem !important;
+}
+
+.event-date {
+  color: #F6C453 !important;
+  -webkit-text-fill-color: #F6C453 !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.82rem !important;
+  letter-spacing: 1px !important;
+  font-weight: 600 !important;
+}
+
+.event-description {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  color: rgba(255, 255, 255, 0.62) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.62) !important;
+  font-size: 0.87rem !important;
+  line-height: 1.7 !important;
+}
+
+.event-type.event {
+  background: rgba(128, 0, 0, 0.55) !important;
+  border: 1px solid rgba(180, 50, 50, 0.55) !important;
+  color: rgba(255, 200, 200, 0.95) !important;
+  border-radius: 20px !important;
+  backdrop-filter: blur(8px) !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+}
+
+.event-type.competition {
+  background: rgba(246, 196, 83, 0.18) !important;
+  border: 1px solid rgba(246, 196, 83, 0.45) !important;
+  color: #F6C453 !important;
+  border-radius: 20px !important;
+  backdrop-filter: blur(8px) !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+}
+
+/* Gallery image containers — glass frame effect */
+.gallery-item {
+  border-radius: 12px !important;
+  overflow: hidden !important;
+  border: 1px solid rgba(246, 196, 83, 0.18) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.60) !important;
+  transition: all 0.42s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.gallery-item:hover {
+  transform: scale(1.07) !important;
+  border-color: rgba(246, 196, 83, 0.50) !important;
+  box-shadow: 0 14px 42px rgba(0, 0, 0, 0.70),
+              0 0 22px rgba(246, 196, 83, 0.25) !important;
+  z-index: 3 !important;
+}
+
+.image-overlay {
+  background: linear-gradient(to bottom,
+    rgba(0, 0, 0, 0.05) 0%,
+    rgba(7, 7, 10, 0.90) 100%) !important;
+  transition: opacity 0.38s ease !important;
+}
+
+
+/* ======================================================================
+   12. CONTACT SECTION — Luxury product card finish
+   ====================================================================== */
+
+.contact-details-panel {
+  padding: 3rem !important;
+  border-radius: 28px !important;
+}
+
+.contact-qr-panel {
+  border-radius: 28px !important;
+  padding: 3rem 2.5rem !important;
+  align-items: center !important;
+  text-align: center !important;
+}
+
+.panel-title {
+  font-family: 'Cinzel', serif !important;
+  font-size: 1.15rem !important;
+  letter-spacing: 4px !important;
+  font-weight: 800 !important;
+  color: #F6C453 !important;
+  -webkit-text-fill-color: #F6C453 !important;
+  border-left: 2px solid rgba(246, 196, 83, 0.70) !important;
+  padding-left: 0.9rem !important;
+  margin-bottom: 2rem !important;
+}
+
+/* Contact info cards — inner glass layer */
+.contact-info-card {
+  background: rgba(10, 12, 18, 0.72) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  border-radius: 16px !important;
+  backdrop-filter: blur(14px) !important;
+  transition: all 0.38s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  padding: 1.2rem 1.5rem !important;
+}
+
+.contact-info-card:hover {
+  background: rgba(14, 16, 22, 0.90) !important;
+  border-color: rgba(246, 196, 83, 0.35) !important;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.48),
+              0 0 18px rgba(246, 196, 83, 0.12) !important;
+  transform: translateX(5px) !important;
+}
+
+.card-icon-box {
+  background: rgba(246, 196, 83, 0.08) !important;
+  border: 1px solid rgba(246, 196, 83, 0.20) !important;
+  border-radius: 14px !important;
+  width: 50px !important; height: 50px !important;
+  transition: all 0.35s ease !important;
+}
+
+.contact-info-card:hover .card-icon-box {
+  background: rgba(246, 196, 83, 0.15) !important;
+  border-color: rgba(246, 196, 83, 0.45) !important;
+  box-shadow: 0 0 20px rgba(246, 196, 83, 0.25) !important;
+}
+
+.info-title {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.70rem !important;
+  letter-spacing: 2.5px !important;
+  font-weight: 800 !important;
+  text-transform: uppercase !important;
+  color: #F6C453 !important;
+  -webkit-text-fill-color: #F6C453 !important;
+  margin-bottom: 0.3rem !important;
+}
+
+.info-text {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.98rem !important;
+  color: rgba(255, 255, 255, 0.88) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.88) !important;
+  line-height: 1.5 !important;
+}
+
+.highlight-link {
+  color: #F6C453 !important;
+  -webkit-text-fill-color: #F6C453 !important;
+  text-decoration: none !important;
+  font-weight: 600 !important;
+  transition: all 0.3s ease !important;
+}
+
+.highlight-link:hover {
+  color: #FFFFFF !important;
+  -webkit-text-fill-color: #FFFFFF !important;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.3) !important;
+}
+
+.info-caption {
+  font-size: 0.78rem !important;
+  color: rgba(255, 255, 255, 0.40) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.40) !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  margin: 0 !important;
+}
+
+/* QR Code — luxury product card */
+.qr-frame-wrapper {
+  position: relative !important;
+}
+
+.premium-qr-code {
+  border: 2px solid rgba(246, 196, 83, 0.65) !important;
+  border-radius: 16px !important;
+  box-shadow:
+    0 12px 38px rgba(0, 0, 0, 0.65),
+    0 0 30px rgba(246, 196, 83, 0.25) !important;
+  transition: all 0.45s ease !important;
+}
+
+.contact-qr-panel:hover .premium-qr-code {
+  box-shadow:
+    0 18px 55px rgba(0, 0, 0, 0.72),
+    0 0 50px rgba(246, 196, 83, 0.45) !important;
+}
+
+.qr-glow-effect {
+  background: radial-gradient(circle, #F6C453 0%, transparent 70%) !important;
+}
+
+.qr-scan-tagline {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.70rem !important;
+  letter-spacing: 2.5px !important;
+  font-weight: 700 !important;
+  color: rgba(246, 196, 83, 0.65) !important;
+  text-transform: uppercase !important;
+}
+
+.qr-description {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  color: rgba(255, 255, 255, 0.65) !important;
+  -webkit-text-fill-color: rgba(255, 255, 255, 0.65) !important;
+  font-size: 0.94rem !important;
+  line-height: 1.65 !important;
+}
+
+/* Social connection panel */
+.social-panel-title {
+  font-family: 'Cinzel', serif !important;
+  font-size: 0.78rem !important;
+  letter-spacing: 3px !important;
+  font-weight: 700 !important;
+  color: rgba(255, 255, 255, 0.70) !important;
+  text-transform: uppercase !important;
+}
+
+.social-btn {
+  border-radius: 14px !important;
+  backdrop-filter: blur(12px) !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 700 !important;
+  font-size: 0.88rem !important;
+  letter-spacing: 0.5px !important;
+  transition: all 0.38s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border: 1px solid rgba(255, 255, 255, 0.10) !important;
+}
+
+.social-btn.instagram {
+  background: linear-gradient(135deg,
+    rgba(225, 48, 108, 0.18), rgba(193, 53, 132, 0.18)) !important;
+  border-color: rgba(225, 48, 108, 0.35) !important;
+}
+
+.social-btn.instagram:hover {
+  background: linear-gradient(135deg,
+    rgba(225, 48, 108, 0.32), rgba(193, 53, 132, 0.32)) !important;
+  border-color: rgba(225, 48, 108, 0.65) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 24px rgba(225, 48, 108, 0.28) !important;
+}
+
+.social-btn.youtube {
+  background: linear-gradient(135deg,
+    rgba(255, 0, 0, 0.18), rgba(200, 0, 0, 0.18)) !important;
+  border-color: rgba(255, 0, 0, 0.35) !important;
+}
+
+.social-btn.youtube:hover {
+  background: linear-gradient(135deg,
+    rgba(255, 0, 0, 0.32), rgba(200, 0, 0, 0.32)) !important;
+  border-color: rgba(255, 0, 0, 0.65) !important;
+  transform: translateY(-3px) !important;
+  box-shadow: 0 8px 24px rgba(255, 0, 0, 0.28) !important;
+}
+
+
+/* ======================================================================
+   13. NAVBAR — Same glass depth as Wings section header
+   ====================================================================== */
+
+/* ======================================================================
+   13. NAVBAR — Floating Glass Pill & Ultra-Luxury Gold Outline Design
+   ====================================================================== */
+
+.navbar {
+  position: fixed !important;
+  top: 1rem !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: calc(100% - 3rem) !important;
+  max-width: 1280px !important;
+  height: 64px !important;
+  background: rgba(8, 10, 15, 0.75) !important;
+  backdrop-filter: blur(24px) saturate(190%) !important;
+  -webkit-backdrop-filter: blur(24px) saturate(190%) !important;
+  border: 1px solid rgba(246, 196, 83, 0.28) !important;
+  border-radius: 40px !important;
+  padding: 0 1.2rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  box-shadow:
+    0 20px 50px rgba(0, 0, 0, 0.80),
+    0 0 30px rgba(246, 196, 83, 0.12),
+    inset 0 1px 0 rgba(255, 255, 255, 0.15) !important;
+  z-index: 1000 !important;
+  box-sizing: border-box !important;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+/* Nav Links Pill Container */
+.nav-links {
+  background: rgba(14, 16, 24, 0.65) !important;
+  border: 1px solid rgba(246, 196, 83, 0.22) !important;
+  border-radius: 30px !important;
+  padding: 0.35rem 0.6rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 0.4rem !important;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08) !important;
+  backdrop-filter: blur(16px) !important;
+}
+
+.nav-btn {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.76rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.8px !important;
+  color: rgba(255, 255, 255, 0.72) !important;
+  padding: 0.45rem 1rem !important;
+  border-radius: 20px !important;
+  border: 1px solid transparent !important;
+  background: transparent !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  gap: 0.45rem !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  cursor: pointer !important;
+}
+
+.nav-btn .nav-icon {
+  display: flex !important;
+  align-items: center !important;
+  color: rgba(255, 255, 255, 0.6) !important;
+  transition: all 0.35s ease !important;
+}
+
+.nav-btn:hover {
+  background: rgba(246, 196, 83, 0.12) !important;
+  border-color: rgba(246, 196, 83, 0.35) !important;
+  color: #FFFFFF !important;
+  transform: translateY(-1px) !important;
+  box-shadow: 0 4px 16px rgba(246, 196, 83, 0.18) !important;
+}
+
+.nav-btn:hover .nav-icon {
+  color: #F6C453 !important;
+  transform: scale(1.12) !important;
+}
+
+.nav-btn.active {
+  background: linear-gradient(135deg, rgba(246, 196, 83, 0.22) 0%, rgba(212, 175, 55, 0.12) 100%) !important;
+  border-color: rgba(246, 196, 83, 0.60) !important;
+  color: #F6C453 !important;
+  font-weight: 700 !important;
+  box-shadow: 0 4px 20px rgba(246, 196, 83, 0.28), inset 0 1px 0 rgba(255, 255, 255, 0.2) !important;
+}
+
+.nav-btn.active .nav-icon {
+  color: #F6C453 !important;
+}
+
+/* Mobile circular 48x48px hamburger button styling */
+@media (max-width: 768px) {
+  .desktop-only-nav {
+    display: none !important;
+  }
+
+  .mobile-menu-toggle {
+    display: flex !important;
+    width: 48px !important;
+    height: 48px !important;
+    border-radius: 50% !important;
+    background: rgba(14, 16, 24, 0.82) !important;
+    border: 1.5px solid rgba(246, 196, 83, 0.45) !important;
+    color: #F6C453 !important;
+    font-size: 1.4rem !important;
+    box-shadow: 0 0 18px rgba(246, 196, 83, 0.3) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  }
+
+  .mobile-menu-toggle:active {
+    transform: scale(0.92) !important;
+  }
+}
+
+/* Premium Mobile Full-Screen Glass Menu Overlay */
+.mobile-fullscreen-overlay {
+  position: fixed !important;
+  top: 1rem !important;
+  left: 50% !important;
+  transform: translateX(-50%) translateY(-20px) !important;
+  width: calc(100% - 2rem) !important;
+  max-width: 480px !important;
+  max-height: calc(90vh) !important;
+  background: rgba(8, 10, 16, 0.94) !important;
+  backdrop-filter: blur(28px) saturate(180%) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(180%) !important;
+  border: 1px solid rgba(246, 196, 83, 0.35) !important;
+  border-radius: 28px !important;
+  box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 35px rgba(246, 196, 83, 0.15) !important;
+  z-index: 9999 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  padding: 1.2rem 1.4rem !important;
+  box-sizing: border-box !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transition: all 0.45s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  overflow-y: auto !important;
+}
+
+.mobile-fullscreen-overlay.active {
+  opacity: 1 !important;
+  pointer-events: auto !important;
+  transform: translateX(-50%) translateY(0) !important;
+}
+
+.overlay-header {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  width: 100% !important;
+  padding-bottom: 0.8rem !important;
+  border-bottom: 1px solid rgba(246, 196, 83, 0.15) !important;
+}
+
+.mobile-close-btn {
+  width: 44px !important;
+  height: 44px !important;
+  border-radius: 50% !important;
+  background: rgba(246, 196, 83, 0.1) !important;
+  border: 1px solid rgba(246, 196, 83, 0.4) !important;
+  color: #F6C453 !important;
+  font-size: 1.3rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: all 0.3s ease !important;
+}
+
+.mobile-close-btn:active {
+  transform: scale(0.9) !important;
+}
+
+.overlay-menu-items {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 0.35rem !important;
+  margin: 0.8rem 0 0.5rem 0 !important;
+  padding: 0 !important;
+}
+
+.mobile-overlay-btn {
+  background: transparent !important;
+  border: none !important;
+  border-left: 3px solid transparent !important;
+  padding: 0.65rem 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+  gap: 1rem !important;
+  color: rgba(255, 255, 255, 0.85) !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.8px !important;
+  text-align: left !important;
+  border-radius: 0 14px 14px 0 !important;
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  cursor: pointer !important;
+}
+
+.mobile-overlay-btn .overlay-icon {
+  color: rgba(246, 196, 83, 0.6) !important;
+  display: flex !important;
+  align-items: center !important;
+  transition: transform 0.3s ease !important;
+}
+
+.mobile-overlay-btn:active,
+.mobile-overlay-btn.active {
+  background: linear-gradient(90deg, rgba(246, 196, 83, 0.18) 0%, transparent 100%) !important;
+  border-left-color: #F6C453 !important;
+  color: #F6C453 !important;
+  font-weight: 700 !important;
+  padding-left: 1.4rem !important;
+}
+
+.mobile-overlay-btn:active .overlay-icon,
+.mobile-overlay-btn.active .overlay-icon {
+  color: #F6C453 !important;
+  transform: scale(1.15) !important;
+}
+
+.overlay-footer {
+  margin-top: 0.6rem !important;
+  padding-top: 0.8rem !important;
+  border-top: 1px solid rgba(246, 196, 83, 0.15) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  gap: 0.6rem !important;
+}
+
+.overlay-social-links {
+  display: flex !important;
+  gap: 1rem !important;
+}
+
+.overlay-social-btn {
+  padding: 0.5rem 1.2rem !important;
+  border-radius: 20px !important;
+  background: rgba(246, 196, 83, 0.08) !important;
+  border: 1px solid rgba(246, 196, 83, 0.25) !important;
+  color: #F6C453 !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 600 !important;
+  text-decoration: none !important;
+  transition: all 0.3s ease !important;
+}
+
+.overlay-copyright {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-size: 0.72rem !important;
+  color: rgba(255, 255, 255, 0.4) !important;
+  margin: 0 !important;
+}
+
+
+/* ======================================================================
+   14. SECTION DIVIDERS — Wings-identical gold glow line
+   ====================================================================== */
+
+.section-divider {
+  position: relative !important;
+  display: block !important;
+  height: 1px !important;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(246, 196, 83, 0.08) 8%,
+    rgba(246, 196, 83, 0.75) 35%,
+    rgba(246, 196, 83, 1.00) 50%,
+    rgba(246, 196, 83, 0.75) 65%,
+    rgba(246, 196, 83, 0.08) 92%,
+    transparent 100%
+  ) !important;
+  box-shadow: 0 0 18px rgba(246, 196, 83, 0.30) !important;
+  margin: 2rem auto !important;
+  width: 80% !important;
+  max-width: 900px !important;
+}
+
+/* Center ornament on dividers */
+.section-divider::before {
+  content: '◆' !important;
+  position: absolute !important;
+  top: 50% !important; left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+  color: #F6C453 !important;
+  font-size: 0.55rem !important;
+  background: #07070a !important;
+  padding: 0 0.7rem !important;
+  line-height: 1 !important;
+  text-shadow: 0 0 10px rgba(246, 196, 83, 0.8) !important;
+}
+
+
+/* ======================================================================
+   15. FOOTER — Rich finishing section
+   ====================================================================== */
+
+footer {
+  background: #050508 !important;
+  border-top: 1px solid rgba(246, 196, 83, 0.15) !important;
+  padding: 3rem 2rem !important;
+  position: relative !important;
+  overflow: hidden !important;
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  color: rgba(255, 255, 255, 0.45) !important;
+}
+
+/* Footer ambient glow */
+footer::before {
+  content: '' !important;
+  position: absolute !important;
+  top: -80px; left: 50%; transform: translateX(-50%) !important;
+  width: 600px; height: 200px !important;
+  background: radial-gradient(ellipse at 50% 0%,
+    rgba(246, 196, 83, 0.10) 0%, transparent 70%) !important;
+  pointer-events: none !important;
+  z-index: 0 !important;
+}
+
+/* Top gold shimmer bar */
+footer::after {
+  content: '' !important;
+  position: absolute !important;
+  top: 0; left: 50%; transform: translateX(-50%) !important;
+  width: 55%; height: 1px !important;
+  background: linear-gradient(90deg,
+    transparent, rgba(246, 196, 83, 0.60), transparent) !important;
+  pointer-events: none !important;
+}
+
+footer > * { position: relative; z-index: 1; }
+
+
+/* ======================================================================
+   16. LIGHTBOX / MODAL OVERLAYS — Deep cinematic backdrop
+   ====================================================================== */
+
+.lightbox,
+.wing-modal-overlay,
+.futuristic-modal-overlay {
+  background: rgba(4, 4, 8, 0.94) !important;
+  backdrop-filter: blur(32px) !important;
+  -webkit-backdrop-filter: blur(32px) !important;
+}
+
+.lightbox-content img {
+  border: 1.5px solid rgba(246, 196, 83, 0.40) !important;
+  border-radius: 16px !important;
+  box-shadow: 0 0 60px rgba(0, 0, 0, 0.85),
+              0 0 30px rgba(246, 196, 83, 0.10) !important;
+}
+
+.lightbox-close {
+  background: rgba(14, 16, 22, 0.85) !important;
+  border: 1.5px solid rgba(246, 196, 83, 0.40) !important;
+  color: #F6C453 !important;
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  border-radius: 50% !important;
+}
+
+.lightbox-close:hover {
+  background: rgba(246, 196, 83, 0.15) !important;
+  border-color: #F6C453 !important;
+  box-shadow: 0 0 22px rgba(246, 196, 83, 0.45) !important;
+  transform: rotate(90deg) scale(1.12) !important;
+}
+
+
+/* ======================================================================
+   17. BUTTONS — Wings CTA arrow circle language everywhere
+   ====================================================================== */
+
+.btn {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  transition: all 0.38s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  box-shadow: 0 8px 28px rgba(212, 175, 55, 0.28) !important;
+}
+
+.btn:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: 0 16px 45px rgba(212, 175, 55, 0.45) !important;
+}
+
+.btn:active {
+  transform: translateY(-1px) !important;
+  transition-duration: 0.08s !important;
+}
+
+.slider-button,
+.coordinator-button {
+  background: rgba(14, 16, 22, 0.82) !important;
+  border: 1.5px solid rgba(246, 196, 83, 0.35) !important;
+  color: #F6C453 !important;
+  backdrop-filter: blur(12px) !important;
+  border-radius: 50% !important;
+  transition: all 0.32s cubic-bezier(0.16, 1, 0.3, 1) !important;
+}
+
+.slider-button:hover,
+.coordinator-button:hover {
+  background: rgba(246, 196, 83, 0.14) !important;
+  border-color: #F6C453 !important;
+  box-shadow: 0 0 24px rgba(246, 196, 83, 0.40) !important;
+  transform: scale(1.12) !important;
+}
+
+
+/* ======================================================================
+   18. GLOBAL TYPOGRAPHY — Unified across entire site
+   ====================================================================== */
+
+h1, h2, h3, h4 {
+  font-family: 'Cinzel', 'Playfair Display', serif !important;
+  line-height: 1.2 !important;
+}
+
+p {
+  font-family: 'Plus Jakarta Sans', sans-serif !important;
+  line-height: 1.78 !important;
+}
+
+/* Text selection matches Wings gold */
+::selection {
+  background: rgba(246, 196, 83, 0.30) !important;
+  color: #FFFFFF !important;
+}
+::-moz-selection {
+  background: rgba(246, 196, 83, 0.30) !important;
+  color: #FFFFFF !important;
+}
+
+/* Slim gold scrollbar */
+::-webkit-scrollbar { width: 4px !important; height: 4px !important; }
+::-webkit-scrollbar-track { background: #07070a !important; }
+::-webkit-scrollbar-thumb {
+  background: rgba(246, 196, 83, 0.32) !important;
+  border-radius: 4px !important;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(246, 196, 83, 0.65) !important;
+}
+
+
+/* ======================================================================
+   19. MOBILE REFINEMENTS — Preserve all responsive layouts
+   ====================================================================== */
+
+@media (max-width: 768px) {
+  .about-section,
+  .coordinators-section,
+  .achievements-section,
+  .events-gallery,
+  .contact-section {
+    padding: 4rem 1rem !important;
+  }
+
+  .vision,
+  .mission,
+  .about-impact,
+  .coordinator-card,
+  .achievement-card,
+  .event-card,
+  .contact-details-panel,
+  .contact-qr-panel {
+    border-radius: 20px !important;
+  }
+
+  .stat-item {
+    border-radius: 18px !important;
+    padding: 1.5rem 1.2rem !important;
+  }
+
+  .stat-item h3 { font-size: 2.2rem !important; }
+  .section-title { font-size: 1.9rem !important; letter-spacing: 1.5px !important; }
+  .section-subtitle { font-size: 0.92rem !important; }
+
+  /* Hide heavy particle backgrounds on mobile for perf */
+  .about-section::before,
+  .coordinators-section::before,
+  .achievements-section::before,
+  .contact-section::before {
+    opacity: 0.25 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-title { font-size: 1.65rem !important; }
+  .coordinator-card, .achievement-card { padding: 1.4rem 1rem !important; }
+  .contact-details-panel, .contact-qr-panel { padding: 1.8rem 1.2rem !important; }
+}
+
+
+/* ======================================================================
+   20. ACCESSIBILITY — Focus visible, high-contrast
+   ====================================================================== */
+
+button:focus-visible,
+a:focus-visible {
+  outline: 2px solid rgba(246, 196, 83, 0.75) !important;
+  outline-offset: 3px !important;
+  border-radius: 6px !important;
+}
+
+/* ======================================================================
+   END — ABHIVYAKTHI PREMIUM DESIGN LANGUAGE
+   One continuous luxury experience. Awwwards-worthy.
+   ====================================================================== */
