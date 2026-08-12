@@ -263,8 +263,8 @@ footer {
 .contact-info-card,
 .gallery-item {
   background: rgba(14, 16, 22, 0.94) !important;
-  backdrop-filter: blur(24px) !important;
-  -webkit-backdrop-filter: blur(24px) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
   border: 1.5px solid rgba(246, 196, 83, 0.28) !important;
   border-radius: 28px !important;
   box-shadow:
@@ -274,6 +274,7 @@ footer {
   position: relative !important;
   overflow: hidden !important;
   box-sizing: border-box !important;
+  transform: translateZ(0);
 }
 
 /* Inner radial glow (= .card-radial-glow) baked into every card via ::before */

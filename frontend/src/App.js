@@ -8,7 +8,6 @@ import HeroSection from './components/HeroSection';
 import AboutSection from './components/AboutSection';
 import WingsSection from './components/WingsSection';
 import CoordinatorsSection from './components/CoordinatorsSection';
-import EventsGallery from './components/EventsGallery';
 import AchievementsSection from './components/AchievementsSection';
 import GallerySection from './components/GallerySection';
 import ContactSection from './components/ContactSection';
@@ -30,23 +29,30 @@ function App() {
     }
   };
 
-  // ScrollSpy: auto-detect active section as user scrolls down the page
+  // ScrollSpy: auto-detect active section as user scrolls down the page (Throttled with rAF)
   useEffect(() => {
     const sectionIds = ['home', 'about', 'wings', 'achievements', 'gallery', 'contact'];
-    
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY + 200;
+    let ticking = false;
 
-      for (let i = sectionIds.length - 1; i >= 0; i--) {
-        const id = sectionIds[i];
-        const element = document.getElementById(id);
-        if (element) {
-          const top = element.offsetTop;
-          if (scrollPosition >= top) {
-            setActiveSection(id);
-            break;
+    const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const scrollPosition = window.scrollY + 200;
+
+          for (let i = sectionIds.length - 1; i >= 0; i--) {
+            const id = sectionIds[i];
+            const element = document.getElementById(id);
+            if (element) {
+              const top = element.offsetTop;
+              if (scrollPosition >= top) {
+                setActiveSection(id);
+                break;
+              }
+            }
           }
-        }
+          ticking = false;
+        });
+        ticking = true;
       }
     };
 
