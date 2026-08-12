@@ -86,6 +86,7 @@ footer {
   background-color: transparent !important;
   background-image: none !important;
   position: relative !important;
+  scroll-snap-align: start !important;
 }
 
 
